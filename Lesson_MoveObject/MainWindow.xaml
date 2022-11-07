@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson_MoveObject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button/>
-    </Grid>
+        Title="MainWindow" Height="450" Width="800" 
+        FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
+    
+    <Canvas Name="MyCanvas" Focusable="True" KeyDown="MyCanvas_KeyDown">
+        <Rectangle Width="50" Height="50" Fill="BlueViolet"
+                   Name="rectangle" Canvas.Left="10" Canvas.Top="10"/>
+    </Canvas>
 </Window>

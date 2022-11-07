@@ -13,35 +13,34 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lesson_MoveObject
+namespace Lesson_GenerateElements
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        Button button = new Button();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            button.Background = Brushes.Yellow;
+            button.Content = "Click ME!";
+            button.FontSize = 40;
+            button.Width = 350;
+            button.Height = 100;
+            grid1.Children.Add(button);
+
+            // add event
+            button.Click += Button_Click;
         }
 
-        private void MyCanvas_KeyDown(object sender, KeyEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Down
-            if (e.Key == Key.S && Canvas.GetTop(rectangle) + rectangle.Height < 400)
-            {
-                Canvas.SetTop(rectangle, Canvas.GetTop(rectangle) + 10);
-            }
-
-            // Up
-            if (e.Key == Key.W && Canvas.GetTop(rectangle) > 0)
-            {
-                Canvas.SetTop(rectangle, Canvas.GetTop(rectangle) - 10);
-            }
-
-            // Right
-
-            // Left
+            MessageBox.Show("OK!");
+            button.Background = Brushes.Green;
         }
     }
 }
