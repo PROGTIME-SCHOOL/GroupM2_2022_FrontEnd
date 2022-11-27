@@ -1,0 +1,71 @@
+﻿<Window x:Class="Lesson_PlatformerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lesson_PlatformerApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="400">
+    <Canvas>
+
+        <Rectangle Fill="RoyalBlue" Width="50" Height="50"
+                   Canvas.Left="100" Canvas.Top="10"/>
+
+        <Rectangle Fill="Orange" Width="200" Height="50"
+                   Canvas.Left="80" Canvas.Top="150"/>
+
+        <Rectangle Fill="Orange" Width="200" Height="50"
+                   Canvas.Left="10" Canvas.Top="300"/>
+
+        <Rectangle Fill="Orange" Width="200" Height="50"
+                   Canvas.Left="170" Canvas.Top="450"/>
+
+
+        <Rectangle Fill="Green" Width="400" Height="10"
+                   Canvas.Left="0" Canvas.Top="580"/>
+
+        <Rectangle Fill="Gold" Width="20" Height="20"
+                   Canvas.Left="221" Canvas.Top="112" RenderTransformOrigin="0.5,0.5" 
+                   >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="45"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+
+        <Rectangle Fill="Gold" Width="20" Height="20"
+                   Canvas.Left="136" Canvas.Top="260" RenderTransformOrigin="0.5,0.5" 
+                   >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="45"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+
+        <Rectangle Fill="Gold" Width="20" Height="20"
+                   Canvas.Left="24" Canvas.Top="538" RenderTransformOrigin="0.5,0.5" 
+                   >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="45"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+
+
+        <Rectangle Fill="Purple" Width="20" Height="50"
+                   Canvas.Left="370" Canvas.Top="525"
+                   RadiusX="10" RadiusY="20"/>
+    </Canvas>
+</Window>
