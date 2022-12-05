@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Diagnostics;       // Debug Console
+using System.Windows.Threading;   // For timer
+
 namespace Lesson_PlatformerApp
 {
     /// <summary>
@@ -20,9 +23,78 @@ namespace Lesson_PlatformerApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        // fields
+        private bool bLeft;
+        private bool bRight;
+
+        private int drop = 10;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = TimeSpan.FromMilliseconds(20);
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // gravity
+            double y = Canvas.GetTop(player);
+            Canvas.SetTop(player, y + drop);
+
+            // collision
+            Rect playerCollision = new Rect(Canvas.GetLeft(player),
+                y, player.Width, player.Height);
+
+            foreach (var rect in MyCanvas.Children.OfType<Rectangle>())
+            {
+                if (rect.Tag != null)  // tag существует
+                {
+                    if (rect.Tag.ToString() == "platform")
+                    {
+                        Rect rectCollision = new Rect(Canvas.GetLeft(rect),
+                                Canvas.GetTop(rect), rect.Width, rect.Height);
+
+                        if (playerCollision.IntersectsWith(rectCollision))
+                        {
+                            drop = 0;
+                        }
+                    }
+                }
+            }
+
+            
+        }
+
+        private void Canvas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.A)
+            {
+                bLeft = true;
+            }
+            else if (e.Key == Key.D)
+            {
+                bRight = true;
+            }
+
+            Debug.WriteLine("bLeft: " + bLeft + ", bRight: " + bRight);
+        }
+
+        private void Canvas_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.A)
+            {
+                bLeft = false;
+            }
+            else if (e.Key == Key.D)
+            {
+                bRight = false;
+            }
+
+            Debug.WriteLine("bLeft: " + bLeft + ", bRight: " + bRight);
         }
     }
 }

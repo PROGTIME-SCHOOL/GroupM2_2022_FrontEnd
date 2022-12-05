@@ -5,20 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson_PlatformerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
-    <Canvas>
+        Title="MainWindow" Height="600" Width="400"
+        FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
+    
+    <Canvas Name="MyCanvas" KeyDown="Canvas_KeyDown" 
+            KeyUp="Canvas_KeyUp" Focusable="True">
 
         <Rectangle Fill="RoyalBlue" Width="50" Height="50"
-                   Canvas.Left="100" Canvas.Top="10"/>
+                   Canvas.Left="100" Canvas.Top="10"
+                   Name="player"/>
 
         <Rectangle Fill="Orange" Width="200" Height="50"
-                   Canvas.Left="80" Canvas.Top="150"/>
+                   Canvas.Left="80" Canvas.Top="150"
+                   Tag="platform"/>
 
         <Rectangle Fill="Orange" Width="200" Height="50"
-                   Canvas.Left="10" Canvas.Top="300"/>
+                   Canvas.Left="10" Canvas.Top="300"
+                   Tag="platform"/>
 
         <Rectangle Fill="Orange" Width="200" Height="50"
-                   Canvas.Left="170" Canvas.Top="450"/>
+                   Canvas.Left="170" Canvas.Top="450"
+                   Tag="platform"/>
 
 
         <Rectangle Fill="Green" Width="400" Height="10"

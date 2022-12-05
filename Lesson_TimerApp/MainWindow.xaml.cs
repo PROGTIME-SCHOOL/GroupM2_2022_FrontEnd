@@ -13,10 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using System.Windows.Threading;  // for timers
-using System.Threading;
+using System.Diagnostics;       // Debug Console
+using System.Windows.Threading;   // For timer
 
-namespace Lesson_TimerApp
+namespace Lesson_PlatformerApp
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -24,36 +24,52 @@ namespace Lesson_TimerApp
     public partial class MainWindow : Window
     {
         // fields
-        int left = 0;
-        int speed = 5;
+        private bool bLeft;
+        private bool bRight;
+
+        private int drop = 10;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            left = (int)ball.Margin.Left;
-
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Tick += Timer_Tick;
-
+            timer.Interval = TimeSpan.FromMilliseconds(20);
             timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            left += speed;
-            ball.Margin = new Thickness(left, 0, 0, 20);
+            // gravity
+        }
 
-            if (ball.Margin.Left > 800 - ball.Width - 20)
+        private void Canvas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.A)
             {
-                speed = -5;
+                bLeft = true;
+            }
+            else if (e.Key == Key.D)
+            {
+                bRight = true;
             }
 
-            if (ball.Margin.Left < 20)
+            Debug.WriteLine("bLeft: " + bLeft + ", bRight: " + bRight);
+        }
+
+        private void Canvas_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.A)
             {
-                speed = 5;
+                bLeft = false;
             }
+            else if (e.Key == Key.D)
+            {
+                bRight = false;
+            }
+
+            Debug.WriteLine("bLeft: " + bLeft + ", bRight: " + bRight);
         }
     }
 }
