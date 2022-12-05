@@ -29,9 +29,10 @@
 
 
         <Rectangle Fill="Green" Width="400" Height="10"
-                   Canvas.Left="0" Canvas.Top="580"/>
+                   Canvas.Left="0" Canvas.Top="580"
+                   Tag="platform"/>
 
-        <Rectangle Fill="Gold" Width="20" Height="20"
+        <Rectangle Tag="coin" Fill="Gold" Width="20" Height="20"
                    Canvas.Left="221" Canvas.Top="112" RenderTransformOrigin="0.5,0.5" 
                    >
             <Rectangle.RenderTransform>
@@ -44,7 +45,7 @@
             </Rectangle.RenderTransform>
         </Rectangle>
 
-        <Rectangle Fill="Gold" Width="20" Height="20"
+        <Rectangle Tag="coin" Fill="Gold" Width="20" Height="20"
                    Canvas.Left="136" Canvas.Top="260" RenderTransformOrigin="0.5,0.5" 
                    >
             <Rectangle.RenderTransform>
@@ -57,7 +58,7 @@
             </Rectangle.RenderTransform>
         </Rectangle>
 
-        <Rectangle Fill="Gold" Width="20" Height="20"
+        <Rectangle Tag="coin" Fill="Gold" Width="20" Height="20"
                    Canvas.Left="24" Canvas.Top="538" RenderTransformOrigin="0.5,0.5" 
                    >
             <Rectangle.RenderTransform>
